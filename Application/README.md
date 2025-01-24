@@ -8,8 +8,6 @@ Remove all items from clipboard tab using menu item (or custom shortcut).
 
 Allows to easily share items in readable text format.
 
-Available in CopyQ v3.0.0.
-
 ### [Edit File](edit-file.ini)
 
 Opens file referenced by selected item in external editor (uses "External editor command" from "History" config tab).
@@ -132,6 +130,10 @@ From currently selected text items, creates a new item with the QR code for the
 text.
 
 Requires [qrcode](https://github.com/lincolnloop/python-qrcode) utility.
+
+### [Sort Tabs](sort-tabs.ini)
+
+Sorts tabs by name.
 
 ### [Tab Key to Select Next/Previous](tab-key-select.ini)
 

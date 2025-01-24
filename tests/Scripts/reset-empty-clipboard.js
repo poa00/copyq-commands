@@ -1,15 +1,17 @@
-lastClipboard = settings('lastClipboard')
-test.assertEquals(undefined, lastClipboard)
+function lastClipboard() {
+    const v = settings('lastClipboard');
+    if (v) {
+        return v[0];
+    }
+    return undefined;
+}
+test.assertEquals(undefined, lastClipboard())
 
-setData(mimeText, "Test")
-test.assertTrue(hasData())
-onClipboardChanged()
+const testText = ByteArray('Test');
+test.copy(testText)
+test.clipboardTextEquals(testText, 'clipboard after copy')
+test.waitForEquals(testText, lastClipboard, 'lastClipboard settings set')
 
-lastClipboard = str(settings('lastClipboard')[0])
-test.assertEquals('Test', lastClipboard)
-
-removeData(mimeText)
-test.assertFalse(hasData())
-onClipboardChanged()
-
-test.clipboardTextEquals('Test')
+test.copy(ByteArray())
+test.waitForEquals(testText, lastClipboard, 'lastClipboard settings unchanged')
+test.clipboardTextEquals(testText, 'clipboard after reset')
